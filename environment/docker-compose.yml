@@ -14,8 +14,10 @@ services:
        MYSQL_DATABASE: test
        MYSQL_USER: test
        MYSQL_PASSWORD: test
+#Puertos a exponer
     ports:
         - 3306:3306
+#volume para persistencia de datos
     volumes:
            - mysqldata:/var/lib/mysql
 volumes:
