@@ -1,17 +1,22 @@
 version: '3'
-service:  
+#Especificacion de los servicios que van a correr en el entorno ('services')
+services:
+#Servicio de la base de datos  
   mysql:
+#imagen de la base de datos
+    image: mysql:latest
+#nombre del contenedor
     container_name: mysql
-    restart: always
+    restart: always 
+#variables de entorno
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: test
-      MYSQL_USER: test
-      MYSQL_PASSWORD: test
+       MYSQL_ROOT_PASSWORD: root
+       MYSQL_DATABASE: test
+       MYSQL_USER: test
+       MYSQL_PASSWORD: test
     ports:
-      - 3306:3306
+        - 3306:3306
     volumes:
-      - mysql:/var/lib/mysql
-    volume:
-      mysql: {} 
-
+           - mysqldata:/var/lib/mysql
+volumes:
+  mysqldata: {} 
