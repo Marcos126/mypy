@@ -1,1 +1,4 @@
 #Mypy
+
+-configurando el entorno
+
