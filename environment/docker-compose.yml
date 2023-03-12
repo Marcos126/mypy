@@ -20,5 +20,8 @@ services:
 #volume para persistencia de datos
     volumes:
            - mysqldata:/var/lib/mysql
+    python:
+#build de la imagen
+        build: ./py/
 volumes:
   mysqldata: {} 
