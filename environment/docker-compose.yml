@@ -2,26 +2,27 @@ version: '3'
 #Especificacion de los servicios que van a correr en el entorno ('services')
 services:
 #Servicio de la base de datos  
-  mysql:
-#imagen de la base de datos
-    image: mysql:latest
-#nombre del contenedor
-    container_name: mysql
-    restart: always 
-#variables de entorno
-    environment:
-       MYSQL_ROOT_PASSWORD: root
-       MYSQL_DATABASE: test
-       MYSQL_USER: test
-       MYSQL_PASSWORD: test
-#Puertos a exponer
-    ports:
-        - 3306:3306
-#volume para persistencia de datos
-    volumes:
-           - mysqldata:/var/lib/mysql
-    python:
-#build de la imagen
-        build: ./py/
+    mysql:
+        #imagen de la base de datos
+        image: mysql:latest
+        #nombre del contenedor
+        container_name: mysql
+        restart: always 
+        #variables de entorno
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: test
+            MYSQL_USER: test
+            MYSQL_PASSWORD: test
+        #Puertos a exponer
+        ports:
+            - 3306:3306
+        volumes:
+            - mysqldata:/var/lib/mysql
+    pythonapp:
+        build: './py'
+        container_name: python
+        restart: 'no'
+        command: 'sleep 10 && python3 /app/datadump.py'
 volumes:
   mysqldata: {} 
