@@ -1,14 +1,31 @@
+#Imagen que se va a usar en el contenedor
+FROM mysql:latest
+
+#Variables de entorno para la configuración de la base de datos
+ENV MYSQL_DATABASE=lomas \
+    MYSQL_USER=marco \
+    MYSQL_PASSWORD=lomas \
+    MYSQL_ROOT_PASSWORD=useyourilussioN
+
+#Variable para exponer el puerto 3306
+EXPOSE 3306
+
+#Comando que se va a ejecutar al iniciar el contenedor
+
+CMD ["mysqld"]
+
+#imagen que se va a usar en el contenedor 
 FROM python:latest
 
+#Carpeta que se va a crear en el contenedor
 WORKDIR /app
 
-#las cosas a copiar no pueden estar mas de una carpeta arriba de donde esta el dockerfile
-#por ejemplo, si el dockerfile esta en environment/py/Dockerfile, no se puede copiar algo que este en environment/requirements.txt
-COPY requirements.txt /tmp/requirements.txt
-COPY datadump.py /app/datadump.py
+COPY ./datadump.py /app/datadump.py 
+COPY ./requirements.txt /tmp/requirements.txt
 
+RUN pip install --upgrade pip &&\
+    pip install -r /tmp/requirements.txt
 
-RUN pip install --upgrade pip && \
-    pip install -r /tmp/requirements.txt 
-LABEL name='MyPythonApp'
-# El CDM no va a aca, va en el docker-compose.yml, porque sino se ejecuta en la creacion de la imagen y no en el run
+CMD [ "sleep 10 && datadump.py" ] 
+
+    

@@ -4,7 +4,7 @@ services:
 #Servicio de la base de datos  
     mysql:
         #imagen de la base de datos
-        image: mysql:latest
+        build: .
         #nombre del contenedor
         container_name: mysql_data
         restart: always 

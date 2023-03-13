@@ -15,5 +15,5 @@ mysqldump_cmd = f"mysqldump -h {CT_HOST} -u {DB_USER} -p{DB_PASSWORD} {DB_NAME} 
 subprocess.call(mysqldump_cmd, shell=True)
 
 # Copy dump.sql file to the host machine
-docker_cp_cmd = f"docker cp {CT_HOST}:{DUMP_PATH} {os.getcwd()}/{DUMP_PATH}"
+docker_cp_cmd = f"docker cp {CT_HOST}:{DUMP_PATH} {os.getcwd()}"
 subprocess.call(docker_cp_cmd, shell=True)
