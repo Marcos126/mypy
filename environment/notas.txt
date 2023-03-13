@@ -13,3 +13,10 @@ RUN pip install --upgrade pip && \
     pip install -r /tmp/requirements.txt 
 
 ---------- El CDM no va a aca, va en el docker-compose.yml, porque sino se ejecuta en la creacion de la imagen y no en el run
+
+-----------Syntaxis para la configuracion de variables de entorno en myslq
+ENV MYSQL_DATABASE=lomas \
+    MYSQL_USER=marco \
+    MYSQL_PASSWORD=lomas \
+    MYSQL_ROOT_PASSWORD=useyourilussioN
+

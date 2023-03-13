@@ -4,28 +4,11 @@ services:
 #Servicio de la base de datos  
     mysql:
         #imagen de la base de datos
-        build: .
+        build:
+            Dockerfile: MY.Dockerfile
         #nombre del contenedor
-        container_name: mysql_data
-        restart: always 
-        #variables de entorno
-        environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: test
-            MYSQL_USER: test
-            MYSQL_PASSWORD: test
-        #Puertos a exponer
-        ports:
-            - 3306:3306
+        restart: always
         volumes:
             - mysqldata:/var/lib/mysql
-    pythonapp:
-        build: './py'
-        container_name: python
-        restart: 'no'
-    #command used to keep the container alive (otherwise it will exit after the command is executed)
-        #command: 'tail -f /dev/null'
-    #command used to run the python script and exit
-        command: 'sleep 10 && python3 /app/datadump.py'
 volumes:
   mysqldata: {} 

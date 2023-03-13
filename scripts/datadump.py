@@ -7,7 +7,7 @@ DB_USER = 'root'
 DB_PASSWORD = 'root'
 DB_NAME = 'lomas'
 
-# Set path to save dump.sql file
+#Set path to save dump.sql file
 DUMP_PATH = 'lomas.sql'
 
 # Create a mysqldump of the database
