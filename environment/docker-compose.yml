@@ -4,8 +4,7 @@ services:
 #Servicio de la base de datos  
     mysql:
         #imagen de la base de datos
-        build:
-            Dockerfile: MY.Dockerfile
+        build: .
         #nombre del contenedor
         restart: always
         volumes:
