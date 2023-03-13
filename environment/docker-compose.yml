@@ -23,6 +23,9 @@ services:
         build: './py'
         container_name: python
         restart: 'no'
-        command: 'sleep 10 && python3 /app/datadump.py'
+    #command used to keep the container alive (otherwise it will exit after the command is executed)
+        command: 'tail -f /dev/null'
+    #command used to run the python script and exit
+        #command: 'sleep 10 && python3 /app/datadump.py'
 volumes:
   mysqldata: {} 
