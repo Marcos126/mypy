@@ -6,7 +6,7 @@ services:
         #imagen de la base de datos
         image: mysql:latest
         #nombre del contenedor
-        container_name: mysql
+        container_name: mysql_data
         restart: always 
         #variables de entorno
         environment:
@@ -24,8 +24,8 @@ services:
         container_name: python
         restart: 'no'
     #command used to keep the container alive (otherwise it will exit after the command is executed)
-        command: 'tail -f /dev/null'
+        #command: 'tail -f /dev/null'
     #command used to run the python script and exit
-        #command: 'sleep 10 && python3 /app/datadump.py'
+        command: 'sleep 10 && python3 /app/datadump.py'
 volumes:
   mysqldata: {} 

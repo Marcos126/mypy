@@ -7,11 +7,8 @@ WORKDIR /app
 COPY requirements.txt /tmp/requirements.txt
 COPY datadump.py /app/datadump.py
 
-# 
-RUN pip install --upgrade pip && \
-    pip install --upgrade setuptools && \
-    pip install --upgrade wheel && \
-    pip install --upgrade virtualenv && \ 
-    pip install -r /tmp/requirements.txt 
 
+RUN pip install --upgrade pip && \
+    pip install -r /tmp/requirements.txt 
+LABEL name='MyPythonApp'
 # El CDM no va a aca, va en el docker-compose.yml, porque sino se ejecuta en la creacion de la imagen y no en el run
